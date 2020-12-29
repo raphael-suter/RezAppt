@@ -1,13 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import GlobalStyle from "./themes/GlobalStyle";
-import LightTheme from "./themes/LightTheme";
+import Theme from "./themes/Theme";
+
+const Title = styled.h1`
+  margin: 4rem 1rem;
+  text-align: center;
+  font-family: "Lobster", cursive;
+  font-size: 72px;
+  color: ${({ theme }) => theme.mainColor};
+`;
 
 const App = () => (
-  <ThemeProvider theme={LightTheme}>
+  <ThemeProvider theme={Theme}>
     <GlobalStyle />
-    <h1>RezAppt</h1>
+    <Title>RezAppt</Title>
   </ThemeProvider>
 );
 
