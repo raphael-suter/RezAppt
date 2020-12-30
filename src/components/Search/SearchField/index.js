@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   border-radius: ${({ theme }) => theme.radius};
   box-shadow: 0 0 8px ${({ theme }) => theme.shadowColor};
@@ -12,7 +13,7 @@ const TextField = styled.input.attrs(() => ({
 }))`
   flex: 1;
   min-width: 0;
-  padding: 1rem 1.2rem;
+  padding: 0.8rem 1rem;
   border: none;
   border-radius: 0;
   border-top-left-radius: ${({ theme }) => theme.radius};
@@ -36,12 +37,41 @@ const Icon = styled.img`
   margin-top: 3px;
 `;
 
-const SearchField = () => (
+const List = styled.ul`
+  position: absolute;
+  width: 100%;
+  top: calc(47px + 1rem);
+  padding: 0.5rem 0;
+  list-style: none;
+  border-radius: ${({ theme }) => theme.radius};
+  background: ${({ theme }) => theme.mainColor};
+  overflow: hidden;
+`;
+
+const ListItem = styled.li`
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background: ${({ theme }) => theme.darkColor};
+  }
+`;
+
+const SearchField = ({ value, suggestions, onType, onSelectSuggestion }) => (
   <Container>
-    <TextField placeholder="Suche" />
-    <Button>
-      <Icon src={`${process.env.PUBLIC_URL}/search.svg`} />
+    <TextField placeholder="Suche" value={value} onChange={onType} />
+    <Button onClick={() => onType({ target: { value: "" } })}>
+      <Icon src={`${process.env.PUBLIC_URL}/close.svg`} />
     </Button>
+    {suggestions && suggestions.length > 0 && (
+      <List>
+        {suggestions.map(({ name }, index) => (
+          <ListItem key={index} onClick={() => onSelectSuggestion(name)}>
+            {name}
+          </ListItem>
+        ))}
+      </List>
+    )}
   </Container>
 );
 

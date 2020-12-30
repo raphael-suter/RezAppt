@@ -14,12 +14,29 @@ const Title = styled.h1`
   color: ${({ theme }) => theme.mainColor};
 `;
 
-const App = () => (
-  <ThemeProvider theme={Theme}>
-    <GlobalStyle />
-    <Title>RezAppt</Title>
-    <Search ingredients={["Gurke", "Milch", "Ei"]} />
-  </ThemeProvider>
-);
+class App extends React.PureComponent {
+  constructor() {
+    super();
+
+    this.state = {
+      ingredients: [],
+    };
+  }
+
+  render() {
+    const { ingredients } = this.state;
+
+    return (
+      <ThemeProvider theme={Theme}>
+        <GlobalStyle />
+        <Title>RezAppt</Title>
+        <Search
+          ingredients={ingredients}
+          onIngredientsUpdate={(ingredients) => this.setState({ ingredients })}
+        />
+      </ThemeProvider>
+    );
+  }
+}
 
 ReactDOM.render(<App />, document.getElementById("root"));

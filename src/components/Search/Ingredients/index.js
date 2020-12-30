@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   margin: 1rem 0;
+  overflow-x: auto;
 `;
 
 const Ingredient = styled.button`
@@ -17,10 +18,12 @@ const Ingredient = styled.button`
   cursor: pointer;
 `;
 
-const Ingredients = ({ items }) => (
+const Ingredients = ({ ingredients, onDeleteIngredient }) => (
   <Container>
-    {items.map((item, index) => (
-      <Ingredient key={index}>{item}</Ingredient>
+    {ingredients.map((item, index) => (
+      <Ingredient key={index} onClick={() => onDeleteIngredient(index)}>
+        {item}
+      </Ingredient>
     ))}
   </Container>
 );
