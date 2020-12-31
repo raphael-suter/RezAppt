@@ -37,11 +37,11 @@ const Ingredient = styled.span`
   background: ${({ theme }) => theme.mediumColor};
 `;
 
-const Recipe = ({ recipe }) => {
+const Recipe = ({ recipe, onClick }) => {
   const { title, image, missedIngredients } = recipe;
 
   return (
-    <Container onClick>
+    <Container onClick={onClick}>
       <Image src={image} />
       <Info>
         <Title>{title}</Title>

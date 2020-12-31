@@ -61,7 +61,7 @@ const SearchField = ({ value, suggestions, onType, onSelectSuggestion }) => (
   <Container>
     <TextField placeholder="Suche" value={value} onChange={onType} />
     <Button onClick={() => onType({ target: { value: "" } })}>
-      <Icon src={`${process.env.PUBLIC_URL}/close.svg`} />
+      <Icon src={`${process.env.PUBLIC_URL}/close-white.svg`} />
     </Button>
     {suggestions && suggestions.length > 0 && (
       <List>
