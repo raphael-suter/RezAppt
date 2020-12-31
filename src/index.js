@@ -7,6 +7,7 @@ import GlobalStyle from "./themes/GlobalStyle";
 import Theme from "./themes/Theme";
 
 const Container = styled.div`
+  height: 100vh;
   max-height: 100vh;
   overflow: auto;
 `;

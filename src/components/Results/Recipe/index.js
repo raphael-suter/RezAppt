@@ -19,6 +19,7 @@ const Info = styled.div`
 `;
 
 const Title = styled.h1`
+  margin-bottom: 0.2rem;
   font-size: 20px;
 `;
 

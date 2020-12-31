@@ -45,7 +45,7 @@ class Search extends React.PureComponent {
     } = evt;
 
     fetch(
-      `https://api.spoonacular.com/food/ingredients/search?apiKey=0d208bfdd320463c9178a20f8b071b13&query=${value}&number=8`
+      `https://api.spoonacular.com/food/ingredients/search?apiKey=7118bf08cdc1468b891131924bca9e21&query=${value}&number=8`
     )
       .then((response) => response.json())
       .then((data) => this.setState({ suggestions: data.results }))
@@ -55,7 +55,7 @@ class Search extends React.PureComponent {
   };
 
   onSelectSuggestion = (ingredient) => {
-    const { ingredients } = this.state;
+    const ingredients = this.state.ingredients.slice();
     ingredients.push(ingredient);
 
     this.setState({ value: "", suggestions: [], ingredients });
