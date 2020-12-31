@@ -51,14 +51,12 @@ class Search extends React.PureComponent {
       target: { value },
     } = evt;
 
-    if (value !== "") {
-      fetch(
-        `https://api.spoonacular.com/food/ingredients/search?apiKey=0d208bfdd320463c9178a20f8b071b13&query=${value}&number=8`
-      )
-        .then((response) => response.json())
-        .then((data) => this.setState({ suggestions: data.results }))
-        .catch(() => alert("Error!"));
-    }
+    fetch(
+      `https://api.spoonacular.com/food/ingredients/search?apiKey=0d208bfdd320463c9178a20f8b071b13&query=${value}&number=8`
+    )
+      .then((response) => response.json())
+      .then((data) => this.setState({ suggestions: data.results }))
+      .catch(() => alert("Error!"));
 
     this.setState({ value });
   };
