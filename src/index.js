@@ -31,7 +31,7 @@ class App extends React.PureComponent {
     super();
 
     this.state = {
-      ingredients: ["milk", "banana"],
+      ingredients: [],
     };
   }
 
