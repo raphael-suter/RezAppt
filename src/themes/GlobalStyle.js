@@ -9,9 +9,8 @@ export default createGlobalStyle`
   }
 
   body {
-    min-height: 100vh;
+    height: 100vh;
     background: no-repeat center center / cover;
     background-image: url(${process.env.PUBLIC_URL}/background.jpg);
-    overflow: hidden;
   }
 `;
